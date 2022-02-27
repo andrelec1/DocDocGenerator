@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% yield title %}</title>
+    <style>
+        .sidenav {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #818181;
+            display: block;
+        }
+
+        .sidenav .active {
+            text-decoration: underline;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        #main {
+            padding-left: 250px;
+        }
+
+        .frame {
+            width: 100%;
+            height: calc(100vh - 50px);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="sidenav">
+    {% yield menu %}
+</div>
+
+<div id="main">
+    {% yield content %}
+</div>
+</body>
+</html>

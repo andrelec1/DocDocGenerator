@@ -3,7 +3,8 @@
   "description": "generate doc with docgenerator",
   "version": "1.0.3",
   "require": {
-    "php": "^8.1"
+    "php": "^8.1",
+    "andrelec1/docgenerator": "dev-main"
   },
   "type": "library",
   "autoload": {
