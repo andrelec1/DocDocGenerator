@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  php:
+    image: devilbox/php-fpm-8.1:latest
+    volumes:
+      - .:/var/www/default/htdocs
+
+  nginx:
+    image: devilbox/nginx-stable:latest
+    volumes:
+      - .:/var/www/default/htdocs
+    ports:
+      - 8080:80
+    links:
+      - php
+    environment:
+      - "PHP_FPM_ENABLE=1"
+      - "PHP_FPM_SERVER_ADDR=php"

@@ -1,0 +1,22 @@
+{
+  "name": "andrelec1/docdocgenerator",
+  "description": "generate doc with docgenerator",
+  "version": "1.0.3",
+  "require": {
+    "php": "^8.1"
+  },
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Andrelec1"
+    }
+  ],
+  "require-dev": {
+    "symfony/var-dumper": "^6.0"
+  }
+}
