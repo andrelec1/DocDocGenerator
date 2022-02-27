@@ -7,7 +7,7 @@ Put All you DocGenerator Doc in a `Pages` folder:
 ![img.png](img.png)
 
 
-Create simple documentation with `index.php`: 
+Create simple documentation with `index.php`:
 
 ````php
 <?php
