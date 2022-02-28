@@ -1,8 +1,8 @@
 <?php
 
-use App\DocumentGenerator;
-use App\Enum\TextAlign;
-use App\Model\Title\TitleElement;
+use DocGenerator\DocumentGenerator;
+use DocGenerator\Enum\TextAlign;
+use DocGenerator\Model\Title\TitleElement;
 
 require dirname(__DIR__).'/../vendor/autoload.php';
 

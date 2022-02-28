@@ -7,7 +7,8 @@
     "build-inc": "node_modules/.bin/vik patch",
     "build-tag": "(node -p \"require('./package.json').version\" | xargs git tag) && git push --tags",
     "build-bump": "npm run build-inc && git add . && git commit -m '🔖 Version Bump' && git push --follow-tags",
-    "dc-up": "docker-compose up --build"
+    "dc:up": "docker-compose up --build",
+    "dc:cmd": "docker exec -it docdocgenerator_php_1 bash"
   },
   "repository": {
     "type": "git",

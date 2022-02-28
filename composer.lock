@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andrelec1/DocGenerator.git",
-                "reference": "bd89026eb199fafc1afe35bc5e7a55e1ee9d1140"
+                "reference": "eb1c1c81a26809c40484054f2e35ef5d361ef213"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andrelec1/DocGenerator/zipball/bd89026eb199fafc1afe35bc5e7a55e1ee9d1140",
-                "reference": "bd89026eb199fafc1afe35bc5e7a55e1ee9d1140",
+                "url": "https://api.github.com/repos/andrelec1/DocGenerator/zipball/eb1c1c81a26809c40484054f2e35ef5d361ef213",
+                "reference": "eb1c1c81a26809c40484054f2e35ef5d361ef213",
                 "shasum": ""
             },
             "require": {
@@ -30,7 +30,7 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "App\\": "src/"
+                    "DocGenerator\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -42,9 +42,9 @@
             "description": "latext concurrent",
             "support": {
                 "issues": "https://github.com/andrelec1/DocGenerator/issues",
-                "source": "https://github.com/andrelec1/DocGenerator/tree/1.0.3"
+                "source": "https://github.com/andrelec1/DocGenerator/tree/main"
             },
-            "time": "2022-02-27T01:52:23+00:00"
+            "time": "2022-02-28T21:31:58+00:00"
         }
     ],
     "packages-dev": [

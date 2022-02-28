@@ -11,12 +11,25 @@ class Kernel
     private string $title = '';
 
     /**
-     * @param array $menu
-     * @return void
+     * @param MenuLink $menuLink
+     * @return $this
      */
-    public function loadMenu(array $menu): void
+    public function addMenuLink(MenuLink $menuLink): self
     {
-        $this->menu = $menu;
+        $this->menu[] = $menuLink;
+
+        return $this;
+    }
+
+    /**
+     * @param array $menuLinks
+     * @return $this
+     */
+    public function addMenuLinks(array $menuLinks): self
+    {
+        array_push($this->menu, ...$menuLinks);
+
+        return $this;
     }
 
     /**
@@ -41,14 +54,37 @@ class Kernel
      * @param string $text
      * @param string $path
      * @return string
+     * @throws \ReflectionException
      */
-    private function linkGenerator(string $text, string $path): string
+    private function linkGenerator(MenuLink $menuLink, int $deep = 0): string
     {
-        if ($path === $this->getCurrentPage()) {
-            return sprintf('<a href="?page=%s" class="active">%s</a>',$path, $text);
+        $reflectionMethod = new \ReflectionMethod(get_class($menuLink), 'getInfo');
+        $reflectionMethod->setAccessible(true);
+        $obj = $reflectionMethod->invoke($menuLink);
+
+        $paddingLeft = $deep > 0 ? 'style="padding-left: '. $deep * 30 + 8 .'px"' : '';
+
+        $balise = '';
+        if ($obj['path'] === null ) {
+            $balise = "<p $paddingLeft>" . $obj['name'] . '</p>';
+        } else {
+            $balise = "<a $paddingLeft";
+            $balise .= 'href="?page=' . $obj['path'] . '" ';
+
+            if ($obj['path'] === $this->getCurrentPage()) {
+                $balise .= ' class="active"';
+            }
+            $balise .= '>' . $obj['name'] . '</a>';
         }
 
-        return sprintf('<a href="?page=%s">%s</a>',$path, $text);
+        $sublinks = '';
+        if (count($obj['subLinks']) > 0) {
+            foreach ($obj['subLinks'] as $subLink) {
+                $sublinks .= $this->linkGenerator($subLink, $deep + 1);
+            }
+        }
+
+        return $balise . $sublinks;
     }
 
     /**
@@ -57,7 +93,7 @@ class Kernel
     private function contentGenerator(): string
     {
         $page = $this->getCurrentPage();
-        $path = "Pages/$page.php";
+        $path = "$page.php";
 
         return sprintf('<iframe src="%s" frameborder="0" class="frame"></iframe>', $path);
     }
@@ -68,8 +104,8 @@ class Kernel
     private function menuGenerator(): string
     {
         $links = [];
-        foreach ($this->menu as $title => $path) {
-            $links[] = $this->linkGenerator($title, $path);
+        foreach ($this->menu as $menuLink) {
+            $links[] = $this->linkGenerator($menuLink);
         }
 
         return implode('', $links);
